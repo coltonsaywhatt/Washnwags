@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://washnwags.co
+
+# Sitemaps
+Sitemap: https://washnwags.co/sitemap.xml

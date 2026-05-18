@@ -1,0 +1,111 @@
+"use client";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { useMemo, useState } from "react";
+import { PawPrint } from "lucide-react";
+import { Card } from "@/components/ui/Card";
+import {
+  artisticServices,
+  baselineServices,
+  coastalExperiences,
+  wellnessServices
+} from "@/lib/constants";
+import { fadeUp, staggerContainer } from "@/lib/animations";
+
+const tabs = [
+  { id: "baseline", label: "Baseline Services", services: baselineServices },
+  { id: "wellness", label: "Wellness Upgrades", services: wellnessServices },
+  { id: "artistic", label: "Artistic Grooming", services: artisticServices },
+  { id: "experiences", label: "Coastal Experiences", services: coastalExperiences }
+] as const;
+
+type TabId = (typeof tabs)[number]["id"];
+
+export function Services() {
+  const [activeTab, setActiveTab] = useState<TabId>("baseline");
+
+  const activeGroup = useMemo(
+    () => tabs.find((tab) => tab.id === activeTab) ?? tabs[0],
+    [activeTab]
+  );
+
+  return (
+    <section className="bg-warm-white/76 py-24 sm:py-32" id="services">
+      <div className="section-shell">
+        <motion.div
+          className="mx-auto max-w-3xl text-center"
+          initial="hidden"
+          variants={staggerContainer}
+          viewport={{ once: true, amount: 0.3 }}
+          whileInView="show"
+        >
+          <motion.p className="eyebrow" variants={fadeUp}>
+            The Spa &amp; Wellness Menu
+          </motion.p>
+          <motion.h2 className="section-heading mt-5" variants={fadeUp}>
+            Every detail chosen for comfort, coat health, and calm.
+          </motion.h2>
+        </motion.div>
+
+        <div className="mx-auto mt-10 grid max-w-5xl gap-2 rounded-[28px] border border-sage/20 bg-cream/68 p-1.5 shadow-[0_10px_30px_rgba(44,44,44,0.05)] sm:grid-cols-2 lg:grid-cols-4">
+          {tabs.map((tab) => (
+            <button
+              aria-pressed={activeTab === tab.id}
+              className="relative min-h-11 rounded-full px-4 py-3 text-sm font-semibold text-charcoal transition"
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              type="button"
+            >
+              {activeTab === tab.id ? (
+                <motion.span
+                  className="absolute inset-0 rounded-full bg-sage/20"
+                  layoutId="service-tab-pill"
+                  transition={{ duration: 0.42, ease: [0.19, 1, 0.22, 1] }}
+                />
+              ) : null}
+              <span className="relative z-10">{tab.label}</span>
+            </button>
+          ))}
+        </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            animate="show"
+            className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4"
+            exit={{ opacity: 0, y: 18 }}
+            initial="hidden"
+            key={activeTab}
+            variants={staggerContainer}
+          >
+            {activeGroup.services.map((service) => (
+              <motion.div key={service.name} variants={fadeUp}>
+                <Card className="group flex h-full flex-col border-t-4 border-t-sage/70 bg-cream/74 p-6 transition duration-300 hover:-translate-y-1 hover:border-sage/50 hover:shadow-glow">
+                  <div className="mb-6 inline-flex h-11 w-11 items-center justify-center rounded-full bg-sage/12 text-sage-dark">
+                    <PawPrint aria-hidden="true" className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-display text-[clamp(1.45rem,2.4vw,2rem)] leading-tight text-charcoal">
+                    {service.name}
+                  </h3>
+                  <p className="mt-4 flex-1 text-sm leading-7 text-muted">
+                    {service.description}
+                  </p>
+                  <div className="mt-7">
+                    <span className="inline-flex rounded-full bg-sage/14 px-4 py-2 font-label text-xs font-semibold uppercase tracking-[0.14em] text-sage-dark">
+                      {service.price}
+                    </span>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        <p className="mt-8 text-center text-sm leading-7 text-muted">
+          &#10024; Prices are starting rates - final cost varies by coat
+          condition/type, age, temperament, customization, location, and
+          requested add-ons.
+        </p>
+      </div>
+    </section>
+  );
+}
