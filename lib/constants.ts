@@ -269,7 +269,7 @@ export const teamMembers = [
     image: "/team/amanda.webp",
     alt: "Amanda smiling with a happy dog in a relaxed Wash and Wags team portrait",
     bio:
-      "Amanda brings a bright, pet-first presence to the team, helping the mobile spa feel warm, approachable, and personal from the first hello."
+      "Amanda brings ER/ICU experience and a bright, pet-first presence to the team, helping the mobile spa feel warm, approachable, and personal from the first hello."
   }
 ];
 

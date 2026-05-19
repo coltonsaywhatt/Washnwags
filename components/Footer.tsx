@@ -68,8 +68,7 @@ export function Footer() {
                   {brand.phone}
                 </a>
               </p>
-              <p>Monday-Friday, 8am-6pm</p>
-              <p>Saturday by appointment</p>
+              <p>Monday-Sunday by appointment</p>
             </div>
             <div className="mt-4 flex gap-2 sm:mt-6 sm:gap-3">
               {socialLinks.map((social) => {

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { PageIntro } from "@/components/PageIntro";
 import { PageCTA } from "@/components/PageCTA";
 import { Team } from "@/components/Team";
-import { TrustBar } from "@/components/TrustBar";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
@@ -22,7 +21,6 @@ export default function OurTeamPage() {
         <Button href="/join-our-team">Join Our Team</Button>
       </PageIntro>
       <Team />
-      <TrustBar />
       <PageCTA variant="team" />
     </main>
   );

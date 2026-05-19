@@ -38,9 +38,9 @@ const ctas = {
       "Tell us about your pet, your goals, and your schedule. We will help shape the right mobile spa visit from there.",
     icon: CalendarHeart,
     primary: { href: brand.quoteHref, label: "Request a Spa Quote" },
-    secondary: { href: brand.textHref, label: `Text ${brand.phone}`, variant: "outlineCream", icon: MessageCircle },
+    secondary: { href: brand.textHref, label: `Text ${brand.phone}`, variant: "ghost", icon: MessageCircle },
     details: ["Mobile service", "Vet-backed handling", "Luxury coat care"],
-    tone: "deep"
+    tone: "blush"
   },
   about: {
     eyebrow: "Care with a point of view",
