@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { BookingBanner } from "@/components/BookingBanner";
 import { MembershipPlans } from "@/components/MembershipPlans";
+import { PageCTA } from "@/components/PageCTA";
 import { PageIntro } from "@/components/PageIntro";
-import { Testimonials } from "@/components/Testimonials";
 
 export const metadata: Metadata = {
   title: "Memberships | Wash & Wags",
@@ -19,8 +18,7 @@ export default function MembershipsPage() {
         title="Exclusive membership programs."
       />
       <MembershipPlans />
-      <Testimonials />
-      <BookingBanner />
+      <PageCTA variant="memberships" />
     </main>
   );
 }

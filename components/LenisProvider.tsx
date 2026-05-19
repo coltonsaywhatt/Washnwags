@@ -6,9 +6,9 @@ import { useEffect } from "react";
 export function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.08,
+      lerp: 0.12,
       smoothWheel: true,
-      wheelMultiplier: 0.86
+      wheelMultiplier: 1.0
     });
 
     let frame = 0;

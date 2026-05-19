@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { BookingBanner } from "@/components/BookingBanner";
 import { PageIntro } from "@/components/PageIntro";
+import { PageCTA } from "@/components/PageCTA";
 import { Team } from "@/components/Team";
 import { TrustBar } from "@/components/TrustBar";
 import { Button } from "@/components/ui/Button";
@@ -23,7 +23,7 @@ export default function OurTeamPage() {
       </PageIntro>
       <Team />
       <TrustBar />
-      <BookingBanner />
+      <PageCTA variant="team" />
     </main>
   );
 }

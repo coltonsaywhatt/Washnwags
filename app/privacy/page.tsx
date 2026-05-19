@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ShieldCheck } from "lucide-react";
-import { BookingBanner } from "@/components/BookingBanner";
 import { PageIntro } from "@/components/PageIntro";
+import { PageCTA } from "@/components/PageCTA";
 import { brand } from "@/lib/constants";
 
 const policySections = [
@@ -102,7 +102,7 @@ export default function PrivacyPage() {
         </div>
       </section>
 
-      <BookingBanner />
+      <PageCTA variant="privacy" />
     </main>
   );
 }

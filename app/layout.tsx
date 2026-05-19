@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { DM_Sans, Jost, Playfair_Display } from "next/font/google";
-import { LocalBusinessJsonLd } from "next-seo";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { LenisProvider } from "@/components/LenisProvider";
@@ -64,6 +63,49 @@ export const metadata: Metadata = {
   }
 };
 
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${brand.siteUrl}/#localbusiness`,
+  name: brand.name,
+  url: brand.siteUrl,
+  telephone: "+18134449211",
+  image: [`${brand.siteUrl}/og-wash-wags.svg`],
+  description:
+    "Fear Free, vet-backed luxury mobile grooming and wellness delivered to your door in Central Florida.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Central Florida",
+    addressRegion: "FL",
+    addressCountry: "US"
+  },
+  areaServed: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: 28.5383,
+      longitude: -81.3792
+    },
+    geoRadius: "150 mi"
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "09:00",
+      closes: "15:00"
+    }
+  ],
+  priceRange: "$$-$$$",
+  sameAs: [brand.instagram, brand.facebook]
+};
+
 export default function RootLayout({
   children
 }: Readonly<{
@@ -77,55 +119,10 @@ export default function RootLayout({
     >
       <body>
         <script
+          type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: `
-(() => {
-  try {
-    const stored = window.localStorage.getItem("wash-wags-theme");
-    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const theme = stored === "light" || stored === "dark" ? stored : systemDark ? "dark" : "light";
-    document.documentElement.dataset.theme = theme;
-    document.documentElement.style.colorScheme = theme;
-  } catch {
-    document.documentElement.dataset.theme = "light";
-  }
-})();
-`
+            __html: JSON.stringify(localBusinessJsonLd)
           }}
-        />
-        <LocalBusinessJsonLd
-          address="Central Florida, FL, US"
-          areaServed={[
-            {
-              geoMidpoint: {
-                latitude: "28.5383",
-                longitude: "-81.3792"
-              },
-              geoRadius: "150 mi"
-            }
-          ]}
-          description="Fear Free, vet-backed luxury mobile grooming and wellness delivered to your door in Central Florida."
-          id={`${brand.siteUrl}/#localbusiness`}
-          images={[`${brand.siteUrl}/og-wash-wags.svg`]}
-          name={brand.name}
-          openingHours={[
-            {
-              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              opens: "08:00",
-              closes: "18:00"
-            },
-            {
-              dayOfWeek: "Saturday",
-              opens: "09:00",
-              closes: "15:00"
-            }
-          ]}
-          priceRange="$$-$$$"
-          sameAs={[brand.instagram, brand.facebook]}
-          telephone="+18134449211"
-          type="LocalBusiness"
-          url={brand.siteUrl}
-          useAppDir
         />
         <LenisProvider>
           <Navbar />

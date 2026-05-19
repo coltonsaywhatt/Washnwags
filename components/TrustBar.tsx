@@ -9,6 +9,7 @@ export function TrustBar() {
     <section
       aria-label="Wash and Wags credentials"
       className="border-y border-sage/15 bg-cream/82 py-8"
+      id="trust"
     >
       <motion.div
         animate="show"

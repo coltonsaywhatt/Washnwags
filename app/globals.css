@@ -29,35 +29,6 @@
   --shadow-color: rgba(37, 20, 95, 0.12);
 }
 
-[data-theme="dark"] {
-  color-scheme: dark;
-  --cream: #100a2c;
-  --warm-white: #18113a;
-  --sage: #9689f0;
-  --sage-dark: #e8ddff;
-  --blush: #d879b8;
-  --charcoal: #f7f1ff;
-  --muted: #c8bfdc;
-  --gold-light: #c8b6ff;
-  --powder-blue: #7c91d8;
-  --page-bg:
-    radial-gradient(circle at 18% 8%, rgba(216, 121, 184, 0.22), transparent 28%),
-    radial-gradient(circle at 82% 18%, rgba(124, 145, 216, 0.22), transparent 30%),
-    radial-gradient(circle at 46% 78%, rgba(150, 137, 240, 0.22), transparent 36%),
-    linear-gradient(145deg, #0b0720 0%, #15103a 44%, #1d1343 100%);
-  --glass-bg: rgba(25, 17, 58, 0.66);
-  --glass-strong: rgba(31, 22, 69, 0.82);
-  --card-bg: rgba(25, 17, 58, 0.72);
-  --card-border: rgba(232, 221, 255, 0.14);
-  --button-bg: #8f80f2;
-  --button-hover: #b9adff;
-  --button-fg: #0f0a2c;
-  --strong-section: #0d0825;
-  --strong-section-text: #f7f1ff;
-  --grid-line: rgba(232, 221, 255, 0.055);
-  --shadow-color: rgba(0, 0, 0, 0.32);
-}
-
 * {
   box-sizing: border-box;
 }
@@ -220,12 +191,13 @@ canvas {
   transition: filter 240ms ease;
 }
 
-[data-theme="dark"] .brand-logo {
-  filter:
-    brightness(3)
-    contrast(1.08)
-    saturate(1.35)
-    drop-shadow(0 0 18px rgba(232, 221, 255, 0.28));
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes pageFade {

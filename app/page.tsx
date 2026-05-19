@@ -1,9 +1,8 @@
-import { BookingBanner } from "@/components/BookingBanner";
+import { ArtisticGroomingCTA } from "@/components/ArtisticGroomingCTA";
 import { CoastalExperiences } from "@/components/CoastalExperiences";
 import { Hero } from "@/components/Hero";
-import { HomeHighlights } from "@/components/HomeHighlights";
 import { HowItWorks } from "@/components/HowItWorks";
-import { Testimonials } from "@/components/Testimonials";
+import { PageCTA } from "@/components/PageCTA";
 import { TrustBar } from "@/components/TrustBar";
 
 export default function Home() {
@@ -11,11 +10,10 @@ export default function Home() {
     <main className="page-fade">
       <Hero />
       <TrustBar />
-      <HomeHighlights />
       <HowItWorks />
-      <Testimonials />
+      <ArtisticGroomingCTA />
       <CoastalExperiences />
-      <BookingBanner />
+      <PageCTA variant="home" />
     </main>
   );
 }

@@ -17,19 +17,6 @@ export const fadeUp: Variants = {
   }
 };
 
-export const fadeIn: Variants = {
-  hidden: {
-    opacity: 0
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      duration: 0.82,
-      ease: easeOutExpo
-    }
-  }
-};
-
 export const staggerContainer: Variants = {
   hidden: {},
   show: {

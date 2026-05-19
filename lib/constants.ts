@@ -6,9 +6,11 @@ export const brand = {
   phoneHref: "tel:+18134449211",
   textHref: "sms:+18134449211",
   quoteHref: "https://forms.gle/2RjBTTy3YjDQ2d6a6",
+  experienceHref:
+    "https://docs.google.com/forms/d/e/1FAIpQLSfqWpJDtYtH8q0MWjTUQa9JLYZnpsu4eOFi2wMb8tUGuTcjXA/viewform?usp=header",
   bookingHref: "https://washnwags.square.site",
   instagram: "https://www.instagram.com/washnwags.co/",
-  facebook: "https://www.facebook.com/washnwags.co"
+  facebook: "https://www.facebook.com/profile.php?id=61577388171164"
 };
 
 export const navLinks = [
@@ -18,39 +20,6 @@ export const navLinks = [
   { label: "Services", href: "/services" },
   { label: "Gallery", href: "/gallery" },
   { label: "Memberships", href: "/memberships" }
-];
-
-export const homeRoutes = [
-  {
-    label: "About",
-    href: "/about",
-    description:
-      "Where emergency veterinary experience, Fear Free practice, and luxury grooming meet whole-pet wellness."
-  },
-  {
-    label: "Our Team",
-    href: "/our-team",
-    description:
-      "Meet the local, mindful care philosophy behind Wash & Wags and the people doing the work with purpose."
-  },
-  {
-    label: "Services",
-    href: "/services",
-    description:
-      "Explore baseline grooming, wellness upgrades, artistic color design, and coastal experiences."
-  },
-  {
-    label: "Gallery",
-    href: "/gallery",
-    description:
-      "See the polished finishes, calm spa setting, and curated dog-friendly coastal moments."
-  },
-  {
-    label: "Memberships",
-    href: "/memberships",
-    description:
-      "Monthly grooming and wellness programs for pets who thrive with consistent care."
-  }
 ];
 
 export const trustStats = [
@@ -201,38 +170,38 @@ export const coastalExperiences = [
   {
     name: "SUP Doggy Anti-Social Club",
     description:
-      "A guided, beginner-friendly stand-up paddleboard introduction with calm confidence-building and splash time. Grooming is not included.",
-    price: "$65+"
+      "Guided beginner SUP introduction with calm confidence-building, group energy, beginner-friendly instruction, and splash/play time. Grooming is not included.",
+    price: "starts at $65+"
   },
   {
     name: "Paddle & Pamper Session",
     description:
-      "Guided SUP session followed by towel dry or rinse and a luxury bath and blowout adjusted by weight, coat, and drying time.",
-    price: "$165+"
+      "Guided SUP session followed by towel dry or rinse and a luxury bath and blowout. Bath and blowout pricing adjusts by weight, coat type, coat condition, and drying time.",
+    price: "starts at $165+"
   },
   {
     name: "Sunset Paddle & Pamper Session",
     description:
-      "A private sunset SUP experience with personalized guidance, professional content/photos, and a luxury bath and blowout afterward.",
-    price: "$295+"
+      "Private sunset SUP experience with personalized guidance, professional content/photos, and a luxury bath and blowout afterward.",
+    price: "starts at $295+"
   },
   {
     name: "Luxury Dog Beach Picnic Session",
     description:
-      "Styled beach picnic setup with dog charcuterie, pup cups, matching accessories, flowers, decor, and photo opportunities.",
-    price: "$325+"
+      "Styled luxury beach picnic setup with dog charcuterie, pup cups, matching accessories or bandanas, flowers, aesthetic decor, and photo/content opportunities.",
+    price: "starts at $325+"
   },
   {
     name: "Dog Mom Retreat Days",
     description:
-      "A styled dog-friendly coastal retreat with luxury picnic details, pup treats, accessories, decor, and content-worthy moments.",
-    price: "$325+"
+      "Styled luxury beach picnic setup with dog charcuterie, pup cups, matching accessories or bandanas, flowers, aesthetic decor, and content-worthy moments.",
+    price: "starts at $325+"
   },
   {
     name: "Birthday / Proposal Experiences",
     description:
-      "Customized beach setup with flowers, themed decor, dog charcuterie, sunset styling, photo moments, and personalized celebration details.",
-    price: "$350+"
+      "Customized luxury beach setup with flowers, themed decor, dog charcuterie, sunset styling, photo/content opportunities, and a personalized celebration experience.",
+    price: "starts at $350+"
   }
 ];
 
@@ -494,4 +463,19 @@ export const galleryImages = [
     alt: "Generated placeholder of calm luxury mobile grooming results",
     span: ""
   }
+];
+
+export const instagramGalleryPosts = [
+  "https://www.instagram.com/reel/DXpH4RwgKgW/",
+  "https://www.instagram.com/reel/DW9T5q5APOA/",
+  "https://www.instagram.com/reel/DXKNN6qAHRn/",
+  "https://www.instagram.com/reel/DYXDwtQA-3Q/",
+  "https://www.instagram.com/reel/DYVlAtECGhp/",
+  "https://www.instagram.com/reel/DYBJxsqgEsK/",
+  "https://www.instagram.com/reel/DX9jOfNA-ml/",
+  "https://www.instagram.com/reel/DX71DqfCXqu/",
+  "https://www.instagram.com/reel/DX5Rud3CrTv/",
+  "https://www.instagram.com/reel/DXxqLTjA6WI/",
+  "https://www.instagram.com/reel/DXvDAaCAA-i/",
+  "https://www.instagram.com/reel/DXsZTB2gv75/"
 ];

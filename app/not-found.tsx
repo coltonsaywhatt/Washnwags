@@ -25,7 +25,7 @@ export default function NotFound() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-[var(--card-border)] bg-[var(--glass-bg)] px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-sage-dark shadow-[0_14px_34px_var(--shadow-color)] backdrop-blur">
               <Sparkles aria-hidden="true" className="h-4 w-4" />
-              404 · Lost leash
+              404 - Lost leash
             </div>
 
             <h1 className="mt-6 max-w-3xl font-display text-[clamp(3.2rem,7vw,7.4rem)] font-semibold leading-none text-charcoal text-balance">

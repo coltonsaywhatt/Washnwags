@@ -2,8 +2,9 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useMemo, useState } from "react";
-import { PawPrint } from "lucide-react";
+import { Check, PawPrint } from "lucide-react";
 import { Card } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 import {
   artisticServices,
   baselineServices,
@@ -47,25 +48,55 @@ export function Services() {
           </motion.h2>
         </motion.div>
 
-        <div className="mx-auto mt-10 grid max-w-5xl gap-2 rounded-[28px] border border-sage/20 bg-cream/68 p-1.5 shadow-[0_10px_30px_rgba(44,44,44,0.05)] sm:grid-cols-2 lg:grid-cols-4">
-          {tabs.map((tab) => (
-            <button
-              aria-pressed={activeTab === tab.id}
-              className="relative min-h-11 rounded-full px-4 py-3 text-sm font-semibold text-charcoal transition"
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              type="button"
-            >
-              {activeTab === tab.id ? (
-                <motion.span
-                  className="absolute inset-0 rounded-full bg-sage/20"
-                  layoutId="service-tab-pill"
-                  transition={{ duration: 0.42, ease: [0.19, 1, 0.22, 1] }}
-                />
-              ) : null}
-              <span className="relative z-10">{tab.label}</span>
-            </button>
-          ))}
+        <div
+          aria-label="Service types"
+          className="mx-auto mt-10 grid max-w-5xl gap-2 rounded-[28px] border border-sage/20 bg-cream/68 p-1.5 shadow-[0_10px_30px_rgba(44,44,44,0.05)] sm:grid-cols-2 lg:grid-cols-4"
+          role="tablist"
+        >
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+
+            return (
+              <button
+                aria-selected={isActive}
+                className={[
+                  "relative min-h-[54px] overflow-hidden rounded-full border px-4 py-3 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
+                  isActive
+                    ? "border-sage bg-sage-dark text-white shadow-[0_16px_34px_rgba(37,20,95,0.22)]"
+                    : "border-transparent bg-white/34 text-charcoal hover:border-sage/25 hover:bg-white/62 hover:text-sage-dark"
+                ].join(" ")}
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                role="tab"
+                type="button"
+              >
+                {isActive ? (
+                  <motion.span
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[linear-gradient(135deg,rgba(129,113,216,0.96),rgba(37,20,95,0.98))]"
+                    layoutId="service-tab-pill"
+                    transition={{ duration: 0.42, ease: [0.19, 1, 0.22, 1] }}
+                  />
+                ) : null}
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  {isActive ? (
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/18">
+                      <Check aria-hidden="true" className="h-3.5 w-3.5" />
+                    </span>
+                  ) : null}
+                  <span>{tab.label}</span>
+                </span>
+                {isActive ? (
+                  <span
+                    aria-hidden="true"
+                    className="relative z-10 mt-1 block font-label text-[0.58rem] font-semibold uppercase tracking-[0.16em] text-white/68"
+                  >
+                    Selected
+                  </span>
+                ) : null}
+              </button>
+            );
+          })}
         </div>
 
         <AnimatePresence mode="wait">
@@ -105,6 +136,22 @@ export function Services() {
           condition/type, age, temperament, customization, location, and
           requested add-ons.
         </p>
+
+        {activeTab === "artistic" ? (
+          <div className="mt-8 flex justify-center">
+            <Button href="/artistic-grooming-color-design">
+              View Artistic Grooming &amp; Color Design
+            </Button>
+          </div>
+        ) : null}
+
+        {activeTab === "experiences" ? (
+          <div className="mt-8 flex justify-center">
+            <Button href="/luxury-coastal-experiences">
+              View Luxury Coastal Experiences
+            </Button>
+          </div>
+        ) : null}
       </div>
     </section>
   );

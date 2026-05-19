@@ -51,55 +51,74 @@ export function Team() {
             </motion.div>
           </div>
 
-          <motion.div className="relative min-h-[560px]" variants={fadeUp}>
-            <div className="absolute inset-x-10 bottom-0 top-12 rounded-[42px] border border-[var(--card-border)] bg-[linear-gradient(145deg,rgba(255,255,255,0.58),rgba(239,183,220,0.22),rgba(199,213,246,0.32))] shadow-petal backdrop-blur" />
-            <div className="relative z-10 mx-auto flex min-h-[560px] max-w-[600px] flex-col justify-center px-4 py-14 sm:px-8">
-              <div className="w-fit rounded-full border border-sage/20 bg-cream/70 px-4 py-2 font-label text-xs font-semibold uppercase tracking-[0.16em] text-sage-dark shadow-card backdrop-blur">
-                Small team, big care standard
-              </div>
+          <motion.div className="relative" variants={fadeUp}>
+            <div className="absolute -right-10 top-6 h-48 w-48 rounded-full bg-sage/18 blur-3xl" />
+            <div className="absolute bottom-8 left-2 h-44 w-44 rounded-full bg-blush/20 blur-3xl" />
 
-              <div className="mt-5 rounded-[34px] border border-[var(--card-border)] bg-cream/62 p-7 shadow-card backdrop-blur">
-                <p className="font-label text-xs font-semibold uppercase tracking-[0.16em] text-sage-dark">
-                  Care standards
-                </p>
-                <div className="mt-8 grid gap-4">
-                  {[
-                    "Veterinary-informed awareness",
-                    "Fear Free handling pace",
-                    "One-on-one mobile appointment flow",
-                    "Polished spa finish with personal follow-through"
-                  ].map((standard) => (
-                    <div className="flex items-center gap-3" key={standard}>
-                      <span className="inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-sage/14 text-sage-dark">
-                        <Sparkles aria-hidden="true" className="h-4 w-4" />
-                      </span>
-                      <span className="text-sm font-semibold leading-6 text-charcoal">
-                        {standard}
-                      </span>
-                    </div>
-                  ))}
+            <div className="relative overflow-hidden rounded-[8px] border border-sage/16 bg-[linear-gradient(135deg,rgba(255,255,255,0.72),rgba(248,243,255,0.48))] p-5 shadow-[0_28px_90px_rgba(37,20,95,0.13)] backdrop-blur sm:p-7 lg:p-8">
+              <div className="flex flex-col gap-5 border-b border-sage/14 pb-6 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="font-label text-xs font-semibold uppercase tracking-[0.22em] text-sage-dark">
+                    Small team
+                  </p>
+                  <h3 className="mt-3 max-w-sm font-display text-[clamp(2rem,3.6vw,3.6rem)] font-semibold leading-[0.98] text-charcoal">
+                    Care that feels personal because it is.
+                  </h3>
+                </div>
+                <div className="w-fit rounded-full border border-sage/18 bg-sage/10 px-4 py-2 font-label text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-sage-dark">
+                  Big care standard
                 </div>
               </div>
 
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-[28px] border border-[var(--card-border)] bg-cream/72 p-5 shadow-card backdrop-blur">
-                  <HeartHandshake aria-hidden="true" className="h-5 w-5 text-sage-dark" />
-                  <p className="mt-3 font-display text-2xl leading-none text-charcoal">
-                    Pet-led, not rushed.
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-muted">
-                    Every groom is paced around comfort, temperament, and trust.
-                  </p>
+              <div className="mt-7 grid gap-3">
+                {[
+                  "Veterinary-informed awareness",
+                  "Fear Free handling pace",
+                  "One-on-one mobile appointment flow",
+                  "Polished spa finish with personal follow-through"
+                ].map((standard, index) => (
+                  <div
+                    className="group grid grid-cols-[2.5rem_1fr] items-center gap-4 border-b border-sage/10 py-4 last:border-b-0"
+                    key={standard}
+                  >
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-sage/18 bg-cream/70 font-label text-xs font-semibold text-sage-dark transition group-hover:border-sage/38 group-hover:bg-sage/14">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-sm font-semibold leading-6 text-charcoal sm:text-base">
+                      {standard}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-7 grid gap-3 border-t border-sage/14 pt-6 sm:grid-cols-2">
+                <div className="flex gap-3">
+                  <HeartHandshake
+                    aria-hidden="true"
+                    className="mt-1 h-5 w-5 flex-none text-sage-dark"
+                  />
+                  <div>
+                    <p className="font-display text-2xl leading-none text-charcoal">
+                      Pet-led, not rushed.
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-muted">
+                      Paced around comfort, temperament, and trust.
+                    </p>
+                  </div>
                 </div>
-                <div className="rounded-[28px] border border-[var(--card-border)] bg-cream/72 p-5 shadow-card backdrop-blur">
-                  <UsersRound aria-hidden="true" className="h-5 w-5 text-sage-dark" />
-                  <p className="mt-3 font-display text-2xl leading-none text-charcoal">
-                    Local, personal, mindful.
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-muted">
-                    Built for pets who deserve quieter grooming and families who
-                    value trust at the door.
-                  </p>
+                <div className="flex gap-3">
+                  <UsersRound
+                    aria-hidden="true"
+                    className="mt-1 h-5 w-5 flex-none text-sage-dark"
+                  />
+                  <div>
+                    <p className="font-display text-2xl leading-none text-charcoal">
+                      Local and mindful.
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-muted">
+                      Quieter grooming for families who value trust at the door.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

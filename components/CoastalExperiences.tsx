@@ -38,8 +38,11 @@ export function CoastalExperiences() {
             moments for dogs and their humans, from beginner SUP sessions to
             styled beach picnics.
           </p>
-          <div className="mt-9">
-            <Button href={brand.bookingHref} variant="outlineCream">
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <Button href="/luxury-coastal-experiences" variant="outlineCream">
+              Explore Experiences
+            </Button>
+            <Button href={brand.experienceHref} variant="cream">
               Book Your Experience
             </Button>
           </div>

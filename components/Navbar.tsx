@@ -12,10 +12,10 @@ import {
   X
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { brand, navLinks } from "@/lib/constants";
 
 const mobileSocialLinks = [
@@ -58,24 +58,28 @@ export function Navbar() {
       className={[
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         isScrolled
-          ? "border-b border-sage/18 bg-cream/86 shadow-[0_12px_34px_rgba(44,44,44,0.06)] backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
+          ? "border-b border-sage/14 bg-[rgba(248,243,255,0.92)] shadow-[0_8px_28px_rgba(37,20,95,0.08)] backdrop-blur-md"
+          : "border-b border-sage/10 bg-[rgba(248,243,255,0.74)] backdrop-blur-sm"
       ].join(" ")}
     >
       <nav className="section-shell flex min-h-[76px] items-center justify-between gap-3 sm:gap-6">
-        <a aria-label="Wash & Wags home" className="flex min-w-0 items-center gap-3" href="/">
+        <Link
+          aria-label="Wash & Wags home"
+          className="flex min-w-0 items-center gap-3"
+          href="/"
+        >
           <Image
             alt="Wash & Wags logo"
-            className="brand-logo h-11 w-11 flex-none rounded-full border border-[var(--card-border)] bg-[var(--glass-strong)] object-contain p-1 sm:h-12 sm:w-12"
+            className="brand-logo h-12 w-12 flex-none object-contain sm:h-14 sm:w-14"
             height={96}
             priority
             src={brand.logo}
             width={96}
           />
-          <span className="truncate font-display text-[clamp(1.34rem,6vw,2.02rem)] font-semibold italic leading-none text-sage-dark">
+          <span className="truncate pb-1 font-display text-[clamp(1.34rem,6vw,2.02rem)] font-semibold italic leading-[1.12] text-sage-dark">
             Wash &amp; Wags
           </span>
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => {
@@ -83,7 +87,7 @@ export function Navbar() {
               link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
 
             return (
-              <a
+              <Link
                 aria-current={isActive ? "page" : undefined}
                 className={[
                   "group relative text-sm font-medium transition hover:text-sage-dark",
@@ -99,13 +103,12 @@ export function Navbar() {
                     isActive ? "scale-x-100" : "scale-x-0"
                   ].join(" ")}
                 />
-              </a>
+              </Link>
             );
           })}
         </div>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <ThemeToggle />
           <Button href={brand.textHref} variant="ghost">
             <MessageCircle aria-hidden="true" className="mr-2 h-4 w-4" />
             Text Us
@@ -114,11 +117,10 @@ export function Navbar() {
         </div>
 
         <div className="flex flex-none items-center gap-2 lg:hidden">
-          <ThemeToggle />
           <button
             aria-expanded={isOpen}
             aria-label="Open navigation menu"
-            className="group relative inline-flex min-h-11 min-w-11 items-center justify-center overflow-hidden rounded-full border border-sage/25 bg-[var(--glass-bg)] text-charcoal shadow-[0_12px_32px_var(--shadow-color)] backdrop-blur transition hover:border-sage focus:outline-none focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+            className="group relative inline-flex min-h-11 min-w-11 items-center justify-center overflow-hidden rounded-full border border-sage/20 bg-cream/82 text-charcoal shadow-[0_10px_24px_rgba(37,20,95,0.1)] backdrop-blur-sm transition hover:border-sage focus:outline-none focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
             onClick={() => setIsOpen(true)}
             type="button"
           >
@@ -132,7 +134,7 @@ export function Navbar() {
         {isOpen ? (
           <motion.div
             animate={{ opacity: 1 }}
-            className="fixed inset-0 z-[90] h-dvh overflow-y-auto bg-cream px-3 py-2 lg:hidden"
+            className="no-scrollbar fixed inset-0 z-[90] h-dvh overflow-x-hidden overflow-y-auto bg-cream px-3 py-2 lg:hidden"
             exit={{ opacity: 0 }}
             initial={{ opacity: 0 }}
             transition={{ duration: 0.28 }}
@@ -141,7 +143,7 @@ export function Navbar() {
 
             <motion.div
               animate={{ y: 0, scale: 1, opacity: 1 }}
-              className="relative mx-auto flex min-h-[calc(100dvh-16px)] max-w-[520px] flex-col overflow-hidden rounded-[30px] border border-[var(--card-border)] bg-[var(--glass-bg)] p-3 shadow-[0_28px_90px_var(--shadow-color)] backdrop-blur-2xl"
+              className="no-scrollbar relative mx-auto flex max-h-[calc(100dvh-16px)] max-w-[520px] flex-col overflow-x-hidden overflow-y-auto rounded-[30px] border border-[var(--card-border)] bg-[var(--glass-bg)] p-3 shadow-[0_28px_90px_var(--shadow-color)] backdrop-blur-2xl"
               exit={{ y: 18, scale: 0.98, opacity: 0 }}
               initial={{ y: 18, scale: 0.98, opacity: 0 }}
               transition={{ duration: 0.42, ease: [0.19, 1, 0.22, 1] }}
@@ -150,27 +152,27 @@ export function Navbar() {
               <div className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-blush/22 blur-3xl" />
 
               <div className="relative flex items-center justify-between gap-4">
-                <a
+                <Link
                   className="flex min-w-0 items-center gap-3"
                   href="/"
                   onClick={() => setIsOpen(false)}
                 >
                   <Image
                     alt="Wash & Wags logo"
-                    className="brand-logo h-12 w-12 flex-none rounded-full border border-[var(--card-border)] bg-[var(--glass-strong)] object-contain p-1"
+                    className="brand-logo h-14 w-14 flex-none object-contain"
                     height={112}
                     src={brand.logo}
                     width={112}
                   />
                   <div className="min-w-0">
-                    <span className="block truncate font-display text-[1.56rem] font-semibold italic leading-none text-sage-dark min-[390px]:text-[1.72rem]">
+                    <span className="block truncate pb-1 font-display text-[1.56rem] font-semibold italic leading-[1.12] text-sage-dark min-[390px]:text-[1.72rem]">
                       Wash &amp; Wags
                     </span>
                     <span className="mt-1 block truncate font-label text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-muted min-[390px]:text-[0.66rem]">
                       Mobile Spa Menu
                     </span>
                   </div>
-                </a>
+                </Link>
                 <button
                   aria-label="Close navigation menu"
                   className="inline-flex min-h-11 min-w-11 flex-none items-center justify-center rounded-full border border-sage/25 bg-[var(--glass-strong)] text-charcoal shadow-[0_12px_32px_var(--shadow-color)] transition hover:border-sage hover:text-sage-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
@@ -188,7 +190,7 @@ export function Navbar() {
                   </span>
                   <div>
                     <p className="font-label text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-sage-dark">
-                      Fear Free · Vet-backed
+                      Fear Free - Vet-backed
                     </p>
                     <p className="mt-1 text-[0.82rem] leading-5 text-muted min-[390px]:text-sm">
                       Luxury mobile grooming, delivered calmly to your door.
@@ -199,7 +201,7 @@ export function Navbar() {
 
               <motion.div
                 animate="show"
-                className="relative mt-3 grid flex-1 content-start gap-2"
+                className="relative mt-3 grid content-start gap-2"
                 initial="hidden"
                 variants={{
                   hidden: {},
@@ -218,7 +220,7 @@ export function Navbar() {
                       : pathname.startsWith(link.href);
 
                   return (
-                    <motion.a
+                    <motion.div
                       aria-current={isActive ? "page" : undefined}
                       className={[
                         "group flex min-h-[46px] items-center justify-between rounded-[18px] border px-3 transition min-[390px]:min-h-[52px] min-[390px]:rounded-[20px] min-[390px]:px-4",
@@ -226,27 +228,31 @@ export function Navbar() {
                           ? "border-sage/35 bg-sage/15 text-sage-dark shadow-[0_14px_34px_var(--shadow-color)]"
                           : "border-transparent bg-[var(--glass-bg)] text-charcoal hover:border-sage/25 hover:bg-[var(--glass-strong)]"
                       ].join(" ")}
-                      href={link.href}
                       key={link.href}
-                      onClick={() => setIsOpen(false)}
                       variants={{
                         hidden: { opacity: 0, x: -14 },
                         show: { opacity: 1, x: 0 }
                       }}
                     >
-                      <span className="flex min-w-0 items-center gap-3">
-                        <span className="font-label text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-muted min-[390px]:text-[0.68rem]">
-                          {String(index + 1).padStart(2, "0")}
+                      <Link
+                        className="flex min-h-[46px] w-full items-center justify-between gap-3 min-[390px]:min-h-[52px]"
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <span className="flex min-w-0 items-center gap-3">
+                          <span className="font-label text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-muted min-[390px]:text-[0.68rem]">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <span className="truncate font-display text-[clamp(1.45rem,7.4vw,2.12rem)] font-semibold leading-none">
+                            {link.label}
+                          </span>
                         </span>
-                        <span className="truncate font-display text-[clamp(1.45rem,7.4vw,2.12rem)] font-semibold leading-none">
-                          {link.label}
-                        </span>
-                      </span>
-                      <ArrowUpRight
-                        aria-hidden="true"
-                        className="h-4 w-4 flex-none opacity-55 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
-                      />
-                    </motion.a>
+                        <ArrowUpRight
+                          aria-hidden="true"
+                          className="h-4 w-4 flex-none opacity-55 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
+                        />
+                      </Link>
+                    </motion.div>
                   );
                 })}
               </motion.div>
