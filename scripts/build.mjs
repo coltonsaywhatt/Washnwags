@@ -2,7 +2,7 @@ import { spawnSync } from "node:child_process";
 import { rmSync } from "node:fs";
 import path from "node:path";
 
-const buildDir = ".next-build";
+const buildDir = process.env.NEXT_DIST_DIR || ".next";
 const env = { ...process.env, NEXT_DIST_DIR: buildDir };
 const binExt = process.platform === "win32" ? ".cmd" : "";
 const bin = (name) => path.join(process.cwd(), "node_modules", ".bin", `${name}${binExt}`);

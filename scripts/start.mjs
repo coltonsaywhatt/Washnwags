@@ -1,7 +1,7 @@
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 
-const env = { ...process.env, NEXT_DIST_DIR: ".next-build" };
+const env = { ...process.env, NEXT_DIST_DIR: process.env.NEXT_DIST_DIR || ".next" };
 const nextBin = path.join(
   process.cwd(),
   "node_modules",
