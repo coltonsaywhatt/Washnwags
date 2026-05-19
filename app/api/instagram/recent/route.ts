@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 const INSTAGRAM_PROFILE_URL =
   "https://www.instagram.com/api/v1/users/web_profile_info/?username=washnwags.co";
@@ -33,6 +34,7 @@ interface InstagramEdge {
 
 export async function GET() {
   const response = await fetch(INSTAGRAM_PROFILE_URL, {
+    cache: "no-store",
     headers: {
       Accept: "application/json",
       "Accept-Language": "en-US,en;q=0.9",
@@ -40,8 +42,7 @@ export async function GET() {
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
       "x-ig-app-id": "936619743392459"
-    },
-    next: { revalidate }
+    }
   });
 
   if (!response.ok) {
